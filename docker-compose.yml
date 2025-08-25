@@ -1,7 +1,7 @@
 services:
   pacs:
     container_name: orthanc
-    image: jodogne/orthanc-plugins
+    image: jodogne/orthanc-plugins:1.12.9
     ports:
       - 8042:8042
       - 4242:4242
@@ -14,7 +14,7 @@ services:
 
   ohif_viewer:
     container_name: ohif
-    image: ohif/viewer
+    image: ohif/app:v3.10.4
     ports:
       - 3000:80
     environment:
