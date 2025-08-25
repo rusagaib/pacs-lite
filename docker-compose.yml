@@ -8,13 +8,14 @@ services:
     volumes:
       - ./orthanc.json:/etc/orthanc/orthanc.json:ro
       - ./orthanc_db:/var/lib/orthanc/db/
+      - ./logo.png:/logo.png:ro
     restart: always
     networks:
       - bridge
 
   ohif_viewer:
     container_name: ohif
-    image: ohif/app:v3.10.4
+    image: ohif/app:v3.11.0
     ports:
       - 3000:80
     environment:

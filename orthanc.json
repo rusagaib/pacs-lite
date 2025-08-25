@@ -35,8 +35,13 @@
   "SslVerifyPeers" : false,
   "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
   "AuthenticationEnabled" : true,
-    "RegisteredUsers" : {
+  "RegisteredUsers" : {
     "admin" : "adminpassword"
+  },
+  "OrthancExplorer2": {
+    "IsDefaultOrthancUI": true,
+    "Theme": "dark",
+    "CustomLogoPath": "/logo.png"
   },
   "DicomTlsEnabled" : false,
   "DicomTlsRemoteCertificateRequired" : true,
