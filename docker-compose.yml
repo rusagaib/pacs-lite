@@ -1,20 +1,21 @@
 services:
   pacs:
-    container_name: orthanc
+    container_name: pacs-lite-orthanc
     image: jodogne/orthanc-plugins:1.12.9
     ports:
-      - 8042:8042
-      - 4242:4242
+      - 127.0.0.1:8042:8042
+      - 127.0.0.1:4242:4242
     volumes:
       - ./orthanc.json:/etc/orthanc/orthanc.json:ro
       - ./orthanc_db:/var/lib/orthanc/db/
       - ./logo.png:/logo.png:ro
     restart: always
     networks:
-      - bridge
+      - pacs-lite
+      - rfproxy
 
   ohif_viewer:
-    container_name: ohif
+    container_name: pacs-lite-ohif
     image: ohif/app:v3.11.0
     ports:
       - 3000:80
@@ -26,7 +27,10 @@ services:
       - ./logo.png:/usr/share/nginx/html/logo.png:ro
     restart: always
     networks:
-      - bridge
+      - pacs-lite
 
 networks:
-  bridge:
+  pacs-lite:
+    driver: bridge
+  rfproxy:
+    external: true

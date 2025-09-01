@@ -34,10 +34,7 @@
   "SslMinimumProtocolVersion" : 4,
   "SslVerifyPeers" : false,
   "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
-  "AuthenticationEnabled" : true,
-  "RegisteredUsers" : {
-    "admin" : "adminpassword"
-  },
+  "AuthenticationEnabled" : false,
   "OrthancExplorer2": {
     "IsDefaultOrthancUI": true,
     "Theme": "dark",
