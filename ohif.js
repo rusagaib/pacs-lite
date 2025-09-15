@@ -1,5 +1,6 @@
 window.config = {
   // default: '/'
+  // default: '/'
   routerBasename: '/',
   extensions: [],
   showStudyList: true,
