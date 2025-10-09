@@ -51,6 +51,7 @@
   "DicomCheckModalityHost" : false,
   "DicomModalities" : {
       // "PACSX" : [ "PACS", "127.0.0.1", 11112]
+      "dicom-router": ["DCMROUTER", "127.0.0.1", 11112]
   },
   "DicomModalitiesInDatabase" : false,
   "DicomEchoChecksFind" : false,
@@ -66,7 +67,7 @@
   "HttpTimeout" : 60,
   "HttpsVerifyPeers" : true,
   "HttpsCACertificates" : "/etc/ssl/certs/ca-certificates.crt",
-"UserMetadata" : {
+  "UserMetadata" : {
     // "Sample" : 1024
   },
   "UserContentType" : {

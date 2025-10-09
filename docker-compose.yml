@@ -3,8 +3,15 @@ services:
     container_name: pacs-lite-orthanc
     image: jodogne/orthanc-plugins:1.12.9
     ports:
+      # - 127.0.0.1:8042:8042
+      # - 127.0.0.1:4242:4242
+      # - ${COMPOSE_PORT_HTTP:-8042}:8042
+      # - ${COMPOSE_PORT_DCOM:-4242}:4242
       - 127.0.0.1:8042:8042
       - 127.0.0.1:4242:4242
+    expose:
+      - "8042"
+      - "4242"
     volumes:
       - ./orthanc.json:/etc/orthanc/orthanc.json:ro
       - ./orthanc_db:/var/lib/orthanc/db/
