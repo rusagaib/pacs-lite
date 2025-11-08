@@ -45,7 +45,7 @@
   "DicomAlwaysAllowEcho" : true,
   "DicomAlwaysAllowStore" : true,
   "DicomAlwaysAllowFind" : false,
-  "DicomAlwaysAllowFindWorklist" : false,
+  "DicomAlwaysAllowFindWorklist" : true,
   "DicomAlwaysAllowGet" : false,
   "DicomAlwaysAllowMove" : false,
   "DicomCheckModalityHost" : false,
@@ -60,7 +60,10 @@
   "DicomThreadsCount" : 4,
   "OrthancPeers" : {
   },
-
+  "DicomWorklists" : {
+    "Enable" : true,
+    "Database" : "/var/tmp/WorklistsDatabase"
+  }
   "OrthancPeersInDatabase" : false,
   "HttpProxy" : "",
   "HttpVerbose" : false,
