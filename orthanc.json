@@ -7,6 +7,7 @@
   "MaximumPatientCount" : 0,
   "MaximumStorageCacheSize" : 128,
   "LuaScripts" : [
+    "/usr/share/orthanc/scripts/authorization.lua"
   ],
   "Plugins" : [ 
     "/usr/share/orthanc/plugins", "/usr/local/share/orthanc/plugins"
@@ -34,7 +35,12 @@
   "SslMinimumProtocolVersion" : 4,
   "SslVerifyPeers" : false,
   "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
-  "AuthenticationEnabled" : false,
+  "AuthenticationEnabled" : true,
+  "RegisteredUsers" : {
+    "admin" : "adminradio0",
+    "dokter" : "dokterradio",
+    "general" : "general0"
+  },
   "OrthancExplorer2": {
     "IsDefaultOrthancUI": true,
     "Theme": "dark",
@@ -63,7 +69,7 @@
   "DicomWorklists" : {
     "Enable" : true,
     "Database" : "/var/tmp/WorklistsDatabase"
-  }
+  },
   "OrthancPeersInDatabase" : false,
   "HttpProxy" : "",
   "HttpVerbose" : false,

@@ -19,6 +19,7 @@ services:
       - ./orthanc_db:/var/lib/orthanc/db/
       - ./WorklistsDatabase:/var/tmp/WorklistsDatabase/
       - ./logo.png:/logo.png:ro
+      - ./scripts:/usr/share/orthanc/scripts
     restart: always
     networks:
       - pacs-lite
