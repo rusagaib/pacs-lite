@@ -1,0 +1,24 @@
+# DICOM Modality Worklist Sample
+
+(0008,0005) CS [ISO_IR 100]                  # SpecificCharacterSet
+(0008,0060) CS [CT]                          # Modality
+
+(0010,0010) PN [DOE^JOHN]                    # PatientName
+(0010,0020) LO [123456]                      # PatientID
+(0010,0030) DA [19900101]                    # PatientBirthDate
+(0010,0040) CS [M]                           # PatientSex
+
+(0008,0050) SH [ACC-0001]                    # AccessionNumber
+(0008,0090) PN [DR^HOUSE]                    # ReferringPhysicianName
+(0008,1030) LO [CT ABDOMEN]                  # StudyDescription
+
+(0040,0100) SQ                                # ScheduledProcedureStepSequence
+  (fffe,e000) na                              # Item
+    (0040,0001) AE [CT01]                     # ScheduledStationAETitle
+    (0040,0002) DA [20260304]                 # ScheduledProcedureStepStartDate
+    (0040,0003) TM [101500]                   # ScheduledProcedureStepStartTime
+    (0040,0006) PN [TECH^JOHN]                # ScheduledPerformingPhysicianName
+    (0040,0007) LO [CT ABDOMEN W CONTRAST]    # Description
+    (0040,0009) SH [SPSID001]                 # ScheduledProcedureStepID
+  (fffe,e00d)                                 # End Item
+(fffe,e0dd)                                   # End Sequence
