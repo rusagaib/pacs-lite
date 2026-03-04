@@ -1,0 +1,6 @@
+gdcm==1.1
+numpy==2.3.4
+pillow==12.0.0
+pydicom==3.0.1
+pylibjpeg==2.1.0
+pynetdicom==3.0.4
