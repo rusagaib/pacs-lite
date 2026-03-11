@@ -14,6 +14,7 @@
   ],
   "ConcurrentJobs" : 2,
   "HttpServerEnabled" : true,
+  "MaxPostSize" : 134217728,
   "OrthancExplorerEnabled" : true,
   "HttpPort" : 8042,
   "HttpDescribeErrors" : true,
@@ -31,7 +32,7 @@
   "DicomScpTimeout" : 30,
   "RemoteAccessAllowed" : true,
   "SslEnabled" : false,
-  "SslCertificate" : "certificate.pem",
+  // "SslCertificate" : "certificate.pem",
   "SslMinimumProtocolVersion" : 4,
   "SslVerifyPeers" : false,
   "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
@@ -66,7 +67,7 @@
   "DicomThreadsCount" : 4,
   "OrthancPeers" : {
   },
-  "DicomWorklists" : {
+  "Worklists" : {
     "Enable" : true,
     "Database" : "/var/tmp/WorklistsDatabase"
   },
@@ -75,7 +76,8 @@
   "HttpVerbose" : false,
   "HttpTimeout" : 60,
   "HttpsVerifyPeers" : true,
-  "HttpsCACertificates" : "/etc/ssl/certs/ca-certificates.crt",
+  "HttpsVerifyPeers" : false,
+  // "HttpsCACertificates" : "/etc/ssl/certs/ca-certificates.crt",
   "UserMetadata" : {
     // "Sample" : 1024
   },
