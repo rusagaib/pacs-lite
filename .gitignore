@@ -1,3 +1,6 @@
 /orthanc_db
 .env
 *.backup
+/WorklistsDatabase
+orthanc.json
+test.md
