@@ -28,24 +28,18 @@ services:
 
   ohif_viewer:
     container_name: pacs-lite-ohif
-    build:
-      context: ./Viewers
-      dockerfile: Dockerfile
-      args:
-        PUBLIC_URL: /public-assets/
+    image: ohif/app:v3.11.0
     ports:
-      - 8043:80
-    expose:
-      - "8043"
+      - 3000:80
+    environment:
+      - APP_CONFIG:/usr/share/nginx/html/app-config.js
     volumes:
       - ./nginx_ohif.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./ohif3_12_new.js:/usr/share/nginx/html/app-config.js:ro
-      - ./ohif3_12_new.js.gz:/usr/share/nginx/html/app-config.js.gz:ro
+      - ./ohif.js:/usr/share/nginx/html/app-config.js:ro
       - ./logo.png:/usr/share/nginx/html/logo.png:ro
     restart: always
     networks:
       - pacs-lite
-      - rfproxy
 
 networks:
   pacs-lite:
