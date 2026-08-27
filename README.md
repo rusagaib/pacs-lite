@@ -1,5 +1,13 @@
 # PACS-Lite
 
+## Features:
+
+- pacs orthanc
+- worklist
+- custom viewer dicom using custom ohif/viewers
+- nginx conf for sso & non-sso
+- change logo.png
+
 ## Quickstart:
 
 ### 1. clone this repo:
@@ -189,14 +197,8 @@ server {
   }
 ```
 
-## Features:
+## Roadmap:
 
-- pacs orthanc
-- worklist
-- custom viewer dicom using custom ohif/viewers
-- nginx conf for sso & non-sso
-- change logo.png
-
-
+1. build docker images & push on image registry (github, docker-hub or private git vcs)
 
 
