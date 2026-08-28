@@ -28,7 +28,11 @@ services:
 
   ohif_viewer:
     container_name: pacs-lite-ohif
-    image: ghcr.io/rusagaib/ohif-viewer:v3.12.11
+    build:
+      context: ./Viewers
+      dockerfile: Dockerfile
+      args:
+        PUBLIC_URL: /public-assets/
     ports:
       - 8043:80
     expose:
