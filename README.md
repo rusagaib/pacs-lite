@@ -102,7 +102,7 @@ git clone git@github.com:rusagaib/pacs-lite.git
 ```sh
 cd /pacs-lite
 cp orthanc.json.example orthanc.json
-git clone -b release/3.12 https://github.com/OHIF/Viewers.git
+git clone -b release/3.12 https://github.com/rusagaib/Viewers.git
 ```
 
 ### 3. adjust user creds, modality list etc on config on orthanc.json
