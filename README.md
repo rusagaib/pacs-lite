@@ -37,7 +37,7 @@
 
 - pacs orthanc
 - worklist module enabled by default
-- custom viewer dicom using custom ohif/viewers
+- custom viewer dicom using [rusagaib/Viewers](https://github.com/rusagaib/Viewers/tree/release/3.12)
 - nginx conf for sso & non-sso
 - change logo.png
 
