@@ -36,7 +36,7 @@
 ## Features:
 
 - pacs orthanc
-- worklist
+- worklist module enabled by default
 - custom viewer dicom using custom ohif/viewers
 - nginx conf for sso & non-sso
 - change logo.png
