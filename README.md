@@ -153,7 +153,7 @@ docker compose down
 # example:
 # on orthanc.json
 ...
-  "registeredusers" : {
+  "RegisteredUsers" : {
     "admin" : "adminradio0", <-- user admin
     "dokter" : "dokterradio", <-- user dokter
     "general" : "general0" <-- user general
