@@ -37,6 +37,7 @@
   "SslVerifyPeers" : false,
   "SslTrustedClientCertificates" : "trustedClientCertificates.pem",
   "AuthenticationEnabled" : true,
+  // example for default user acount PLEASE CHANGE IT ON PROD
   "RegisteredUsers" : {
     "admin" : "adminradio0",
     "dokter" : "dokterradio",
@@ -56,8 +57,13 @@
   "DicomAlwaysAllowGet" : false,
   "DicomAlwaysAllowMove" : false,
   "DicomCheckModalityHost" : false,
+  // example for modality list PLEASE CHANGE IT ON PROD
   "DicomModalities" : {
-    // "AET_NICKNAME": ["AET", "IP", PORT]
+      // "PACSX" : [ "PACS", "127.0.0.1", 11112]
+      // "PHILIPSCRX" : [ "PHILIPSCRX", "x.x.x.x", xxxxx]
+      // "OSIRIS" : [ "OSIRIS", "x.x.x.x", xxxxx]
+      // "PHOHENIX" : [ "PHOHENIX", "x.x.x.x", xxxxx]
+      "dicom-router": ["DCMROUTER", "127.0.0.1", 11112]
   },
   "DicomModalitiesInDatabase" : false,
   "DicomEchoChecksFind" : false,
@@ -78,13 +84,11 @@
   "HttpsVerifyPeers" : false,
   // "HttpsCACertificates" : "/etc/ssl/certs/ca-certificates.crt",
   "UserMetadata" : {
+    // "Sample" : 1024
   },
   "UserContentType" : {
-  },
-  "RegisteredUsers": {
-    "dokter": "password-here",
-    "admin": "password-here",
-    "general": "password-here"
+    // "sample" : 1024
+    // "sample2" : [ 1025, "application/pdf" ]
   },
   "StableAge" : 60,
   "StrictAetComparison" : false,
@@ -105,7 +109,7 @@
   "SynchronousCMove" : true,
   "JobsHistorySize" : 10,
   "SaveJobs" : true,
-  "OverwriteInstances" : false,
+  "OverwriteInstances" : true,
   "MediaArchiveSize" : 1,
   "StorageAccessOnFind" : "Always",
   "MetricsEnabled" : true,

@@ -6,20 +6,25 @@
 * [Features:](#features)
 * [Quickstart:](#quickstart)
   * [1. clone this repo:](#1-clone-this-repo)
-  * [2. pull ohif Viewers image:](#2-pull-ohif-viewers-image)
-  * [3. run docker compose:](#3-run-docker-compose)
-  * [4. check running container images:](#4-check-running-container-images)
-  * [5. check running container](#5-check-running-container)
-  * [6. stop docker compose:](#6-stop-docker-compose)
+  * [2. pull ohif Viewers image & change orthanc.json.example to orthanc.json:](#2-pull-ohif-viewers-image--change-orthancjsonexample-to-orthancjson)
+  * [3. adjust user creds, modality list etc on config on orthanc.json](#3-adjust-user-creds-modality-list-etc-on-config-on-orthancjson)
+  * [4. run docker compose:](#4-run-docker-compose)
+  * [5. check running container images:](#5-check-running-container-images)
+  * [6. check running container](#6-check-running-container)
+  * [7. stop docker compose:](#7-stop-docker-compose)
 * [Quickstart: For Manual Build Ohif-viewer](#quickstart-for-manual-build-ohif-viewer)
   * [1. clone this repo:](#1-clone-this-repo-1)
-  * [2. clone ohif viewer:](#2-clone-ohif-viewer)
-  * [3. rename docker-compose.yml & use docker-compose.yml.old2:](#3-rename-docker-composeyml--use-docker-composeymlold2)
-  * [4. build ohif Viewers image:](#4-build-ohif-viewers-image)
-  * [5. run docker compose:](#5-run-docker-compose)
-  * [6. check running container images:](#6-check-running-container-images)
-  * [7. check running container](#7-check-running-container)
-  * [8. stop docker compose:](#8-stop-docker-compose)
+  * [2. clone ohif viewer & copy orthanc.json.example to orthanc.json:](#2-clone-ohif-viewer--copy-orthancjsonexample-to-orthancjson)
+  * [3. adjust user creds, modality list etc on config on orthanc.json](#3-adjust-user-creds-modality-list-etc-on-config-on-orthancjson-1)
+  * [4. rename docker-compose.yml & use docker-compose.yml.old2:](#4-rename-docker-composeyml--use-docker-composeymlold2)
+  * [5. build ohif Viewers image:](#5-build-ohif-viewers-image)
+  * [6. run docker compose:](#6-run-docker-compose)
+  * [7. check running container images:](#7-check-running-container-images)
+  * [8. check running container](#8-check-running-container)
+  * [9. stop docker compose:](#9-stop-docker-compose)
+* [*NOTES: Adjust Orthanc User & Authorization previlages:](#notes-adjust-orthanc-user--authorization-previlages)
+* [*NOTES: change modality list on Orthanc:](#notes-change-modality-list-on-orthanc)
+* [*NOTES: change Orthanc branding logo:](#notes-change-orthanc-branding-logo)
 * [*NOTES: migrating currently orthanc_db data to new dir:](#notes-migrating-currently-orthanc_db-data-to-new-dir)
 * [*Additional Config (NGINX):](#additional-config-nginx)
   * [- nginx conf non sso (outer-client-config):](#--nginx-conf-non-sso-outer-client-config)
@@ -47,32 +52,35 @@ git clone https://github.com/rusagaib/pacs-lite.git
 git clone git@github.com:rusagaib/pacs-lite.git 
 ```
 
-### 2. pull ohif Viewers image:
+### 2. pull ohif Viewers image & change orthanc.json.example to orthanc.json:
 
 ```sh
 cd pacs-lite
+cp orthanc.json.example orthanc.json
 docker pull ghcr.io/rusagaib/ohif-viewer:v3.12.11 
 ```
 
-### 3. run docker compose:
+### 3. adjust user creds, modality list etc on config on orthanc.json
+
+### 4. run docker compose:
 
 ```sh
 docker compose up -d
 ```
 
-### 4. check running container images:
+### 5. check running container images:
 
 ```sh
 docker ps
 ```
 
-### 5. check running container
+### 6. check running container
 
 ```sh
 docker stats
 ```
 
-### 6. stop docker compose:
+### 7. stop docker compose:
 
 ```sh
 docker compose down
@@ -89,22 +97,24 @@ git clone https://github.com/rusagaib/pacs-lite.git
 git clone git@github.com:rusagaib/pacs-lite.git 
 ```
 
-### 2. clone ohif viewer:
+### 2. clone ohif viewer & copy orthanc.json.example to orthanc.json:
 
 ```sh
 cd /pacs-lite
+cp orthanc.json.example orthanc.json
 git clone -b release/3.12 https://github.com/OHIF/Viewers.git
 ```
 
-### 3. rename docker-compose.yml & use docker-compose.yml.old2:
+### 3. adjust user creds, modality list etc on config on orthanc.json
+
+### 4. rename docker-compose.yml & use docker-compose.yml.old2:
 
 ```sh
 mv docker-compose.yml docker-compose.yml.old3
 mv docker-compose.yml.old2 docker-compose.yml
 ```
 
-
-### 4. build ohif Viewers image:
+### 5. build ohif Viewers image:
 
 ```sh
 docker compose build --no-cache ohif_viewer
@@ -112,28 +122,67 @@ docker builder prune
 docker images prune
 ```
 
-### 5. run docker compose:
+### 6. run docker compose:
 
 ```sh
 docker compose up -d
 ```
 
-### 6. check running container images:
+### 7. check running container images:
 
 ```sh
 docker ps
 ```
 
-### 7. check running container
+### 8. check running container
 
 ```sh
 docker stats
 ```
 
-### 8. stop docker compose:
+### 9. stop docker compose:
 
 ```sh
 docker compose down
+```
+
+## *NOTES: Adjust Orthanc User & Authorization previlages:
+
+```sh
+# to adjust orthanc user account all confing on orthanc.json on "RegisteredUsers"
+# example:
+# on orthanc.json
+...
+  "registeredusers" : {
+    "admin" : "adminradio0", <-- user admin
+    "dokter" : "dokterradio", <-- user dokter
+    "general" : "general0" <-- user general
+  },
+...
+
+# to adjust authorization or user previlages on ./scripts/authorization.lua
+```
+
+## *NOTES: change modality list on Orthanc:
+
+```sh
+# example:
+# on orthanc.json
+...
+  "DicomModalities" : {
+      // "PACSX" : [ "PACS", "127.0.0.1", 11112]
+      // "PHILIPSCRX" : [ "PHILIPSCRX", "x.x.x.x", xxxxx]
+      // "OSIRIS" : [ "OSIRIS", "x.x.x.x", xxxxx]
+      // "PHOHENIX" : [ "PHOHENIX", "x.x.x.x", xxxxx]
+      "dicom-router": ["DCMROUTER", "127.0.0.1", 11112]
+  },
+...
+```
+
+## *NOTES: change Orthanc branding logo:
+
+```sh
+# just change logo.png to new logo.png
 ```
 
 ## *NOTES: migrating currently orthanc_db data to new dir:
