@@ -1,4 +1,32 @@
-# PACS-Lite
+# pacs-lite
+
+## TOC:
+<!-- mtoc-start -->
+
+* [Features:](#features)
+* [Quickstart:](#quickstart)
+  * [1. clone this repo:](#1-clone-this-repo)
+  * [2. pull ohif Viewers image:](#2-pull-ohif-viewers-image)
+  * [3. run docker compose:](#3-run-docker-compose)
+  * [4. check running container images:](#4-check-running-container-images)
+  * [5. check running container](#5-check-running-container)
+  * [6. stop docker compose:](#6-stop-docker-compose)
+* [Quickstart: For Manual Build Ohif-viewer](#quickstart-for-manual-build-ohif-viewer)
+  * [1. clone this repo:](#1-clone-this-repo-1)
+  * [2. clone ohif viewer:](#2-clone-ohif-viewer)
+  * [3. rename docker-compose.yml & use docker-compose.yml.old2:](#3-rename-docker-composeyml--use-docker-composeymlold2)
+  * [4. build ohif Viewers image:](#4-build-ohif-viewers-image)
+  * [5. run docker compose:](#5-run-docker-compose)
+  * [6. check running container images:](#6-check-running-container-images)
+  * [7. check running container](#7-check-running-container)
+  * [8. stop docker compose:](#8-stop-docker-compose)
+* [*NOTES: migrating currently orthanc_db data to new dir:](#notes-migrating-currently-orthanc_db-data-to-new-dir)
+* [*Additional Config (NGINX):](#additional-config-nginx)
+  * [- nginx conf non sso (outer-client-config):](#--nginx-conf-non-sso-outer-client-config)
+  * [- nginx conf with sso (outer-client-config):](#--nginx-conf-with-sso-outer-client-config)
+* [Roadmap:](#roadmap)
+
+<!-- mtoc-end -->
 
 ## Features:
 
@@ -19,6 +47,48 @@ git clone https://github.com/rusagaib/pacs-lite.git
 git clone git@github.com:rusagaib/pacs-lite.git 
 ```
 
+### 2. pull ohif Viewers image:
+
+```sh
+cd pacs-lite
+docker pull ghcr.io/rusagaib/ohif-viewer:v3.12.11 
+```
+
+### 3. run docker compose:
+
+```sh
+docker compose up -d
+```
+
+### 4. check running container images:
+
+```sh
+docker ps
+```
+
+### 5. check running container
+
+```sh
+docker stats
+```
+
+### 6. stop docker compose:
+
+```sh
+docker compose down
+```
+
+## Quickstart: For Manual Build Ohif-viewer
+
+### 1. clone this repo:
+
+```sh
+// using https
+git clone https://github.com/rusagaib/pacs-lite.git
+// or using ssh
+git clone git@github.com:rusagaib/pacs-lite.git 
+```
+
 ### 2. clone ohif viewer:
 
 ```sh
@@ -26,7 +96,15 @@ cd /pacs-lite
 git clone -b release/3.12 https://github.com/OHIF/Viewers.git
 ```
 
-### 3. build ohif Viewers image:
+### 3. rename docker-compose.yml & use docker-compose.yml.old2:
+
+```sh
+mv docker-compose.yml docker-compose.yml.old3
+mv docker-compose.yml.old2 docker-compose.yml
+```
+
+
+### 4. build ohif Viewers image:
 
 ```sh
 docker compose build --no-cache ohif_viewer
@@ -34,31 +112,53 @@ docker builder prune
 docker images prune
 ```
 
-### 4. run docker compose:
+### 5. run docker compose:
 
 ```sh
 docker compose up -d
 ```
 
-### 5. check running container images:
+### 6. check running container images:
 
 ```sh
 docker ps
 ```
 
-### 6. check running container
+### 7. check running container
 
 ```sh
 docker stats
 ```
 
-### 7. stop docker compose:
+### 8. stop docker compose:
 
 ```sh
 docker compose down
 ```
 
-## Additional Config (NGINX):
+## *NOTES: migrating currently orthanc_db data to new dir:
+
+```sh
+# example: 
+# current old directory orthanc_db on /mnt/diskD/pacs-lite/orthanc_db
+# new directory orthanc_db for pacs-lite are on /mnt/diskD/new/pacs-lite/orthanc_db
+
+# cd to new directory pacs-lite & stop docker container:
+cd /mnt/diskD/new/pacs-lite
+docker compose down
+
+# remove new empty orthanc_db directory
+sudo rm -rf /mnt/diskD/new/pacs-lite/orthanc_db
+
+# copy or move old orthanc_db directory to new directory
+# for copy
+sudo cp -r /mnt/diskD/pacs-lite/orthanc_db /mnt/dataD/new/pacs-lite/
+
+# or move to save storage space 
+sudo mv /mnt/diskD/pacs-lite/orthanc_db /mnt/dataD/new/pacs-lite/
+```
+
+## *Additional Config (NGINX):
 
 ### - nginx conf non sso (outer-client-config):
 
@@ -199,6 +299,6 @@ server {
 
 ## Roadmap:
 
-1. build docker images & push on image registry (github, docker-hub or private git vcs)
+1. DONE: build docker images & push on image registry (github, docker-hub or private git vcs)
 
 
