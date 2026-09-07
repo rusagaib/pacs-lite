@@ -1,13 +1,7 @@
 services:
   pacs:
     container_name: pacs-lite-orthanc
-    # image: jodogne/orthanc-plugins:1.12.10
-    image: orthancteam/orthanc:26.8.2
-    environment:
-      DICOM_WEB_PLUGIN_ENABLED: "true"
-      STONE_WEB_VIEWER_PLUGIN_ENABLED: "true"
-      OHIF_PLUGIN_ENABLED: "true"
-      VOLVIEW_PLUGIN_ENABLED: "true"
+    image: jodogne/orthanc-plugins:1.12.9
     ports:
       # - 127.0.0.1:8042:8042
       # - 127.0.0.1:4242:4242
@@ -24,7 +18,7 @@ services:
       - ./orthanc.json:/etc/orthanc/orthanc.json:ro
       - ./orthanc_db:/var/lib/orthanc/db/
       # - ./WorklistsDatabase:/var/tmp/WorklistsDatabase
-      - ./WorklistsDatabase_test:/var/tmp/WorklistsDatabase
+      - ./WorklistsDatabase_old:/var/tmp/WorklistsDatabase
       - ./scripts:/usr/share/orthanc/scripts
       - ./logo.png:/logo.png:ro
       - ./scripts:/usr/share/orthanc/scripts
